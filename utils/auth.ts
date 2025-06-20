@@ -6,10 +6,10 @@ const { request, chromium } = require('playwright');
 
 dotenv.config();
 
-const nonceUrl = 'https://site-dev/metamask/nonce';
-const walletAddress = '0xbCdbB000D000B000eb00aBa0B00000eb000BBf00';
-const privateCode = 'bebbc000a00000a0fcfc000b000f0bfcf000fbaebecfcaab';
-const tokenUrl = 'https://site-dev/security/token'
+const nonceUrl = 'https://site/metamask/nonce';
+const walletAddress = '0x0b00000e0f003A00Bc000c0000e00Ecae000E0f0';
+const privateCode = '00f00dfc00000000dab00f000000f00ecabefcfffcf00cfebebbba0b';
+const tokenUrl = 'https://site/security/token'
 const utils = ethers.utils;
 
 
@@ -20,7 +20,7 @@ async function getNonce(address?: string): Promise<string>{
   const response = await requestContext.post(nonceUrl, {
     data: { "address": address, 
       "blockchain": "ethereum"
-     },
+     }
   });
 
   const responseData = await response.json();
@@ -38,7 +38,7 @@ async function getSign(): Promise<string> {
 }
 
 
-async function getAccessToken(address?: string): Promise<string> {
+export async function getAccessToken(address?: string): Promise<string> {
   address = address ?? walletAddress;
 
   const requestContext = await request.newContext();
@@ -53,3 +53,12 @@ async function getAccessToken(address?: string): Promise<string> {
   
   return accessToken;
 }
+
+(async () => {
+  try {
+    const accessToken = await getAccessToken();
+    console.log('Access Token:', accessToken);
+  } catch (error) {
+    console.error('Error getting access token:', error);
+  }
+})();
