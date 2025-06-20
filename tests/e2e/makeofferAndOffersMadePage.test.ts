@@ -386,8 +386,7 @@ test('check sorting by Marketplace on offers made', async () => {
   }
 });
 
-// test is ready,  need fix KNA-1303 and 1709
-test.skip('check sorting by time on offers made', async () => {
+test('check sorting by time on offers made', async () => {
   // Function to perform sorting by time and verify the data
   const sortAndVerifyByTime = async () => {
     const timeOptions = ['Last hour', 'Last 6 hours', 'Last 24 hours', 'Last 7 days', 'Last 30 days'];

@@ -37,7 +37,7 @@ test.afterEach(async () => {
   });
 
 
-test.skip('search nft',async()=>{
+test('search nft',async()=>{
     await page.goto(BASE_URL_DEV+TRENDING_TAB);
     await page.locator('[class="flex cursor-pointer items-center gap-[10px] overflow-hidden bg-white px-0 group-hover:bg-ui-50 dark:bg-ui-950 dark:group-hover:bg-ui-900 [&>span]:truncate flex-[1_1_26%] mobile:flex-[1_1_16%] mobile:sticky mobile:left-0 mobile:z-[9] overflow-x-hidden mobile:pl-2.5"]').first().click();
     await page.getByPlaceholder('Search NFTs...').fill('tests');//nft Name
